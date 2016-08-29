@@ -17,5 +17,4 @@ var About = (props) => {
   );
 };
 
-
 module.exports = About;
