@@ -25624,27 +25624,47 @@
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 
+	    this.setState({
+	      isLoading: true,
+	      errorMessage: undefined
+	    });
+
 	    openWeatherMap.getTemp(location).then(function (temp) {
 	      that.setState({
 	        location: location,
-	        temp: temp
+	        temp: temp,
+	        isLoading: false
 	      });
 	    }, function (errorMessage) {
+	      that.setState({ isLoading: false });
 	      alert(errorMessage);
 	    });
 	  },
 	  render: function render() {
 	    var _state = this.state;
+	    var isLoading = _state.isLoading;
 	    var temp = _state.temp;
 	    var location = _state.location;
 
+
+	    function renderMessage() {
+	      if (isLoading) {
+	        return React.createElement(
+	          'h3',
+	          { className: 'text-center' },
+	          'Fetching Weather..!'
+	        );
+	      } else if (temp && location) {
+	        return React.createElement(WeatherMessage, { temp: temp, location: location });
+	      }
+	    }
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
-	        'h3',
-	        null,
-	        'Weather component'
+	        'h1',
+	        { className: 'text-center' },
+	        'Get Weather'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
 	      React.createElement(WeatherMessage, { temp: temp, location: location })
@@ -25684,7 +25704,7 @@
 	        React.createElement('input', { type: 'text', ref: 'location' }),
 	        React.createElement(
 	          'button',
-	          null,
+	          { className: 'button expanded hollow' },
 	          'Get Weather'
 	        )
 	      )
@@ -25697,7 +25717,7 @@
 /* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
@@ -25719,11 +25739,11 @@
 	  //var {temp, location} = props;
 
 	  return React.createElement(
-	    'h3',
-	    null,
-	    'It\'s it ',
+	    "h3",
+	    { className: "text-center" },
+	    "It's it ",
 	    temp,
-	    ' in ',
+	    " in ",
 	    location
 	  );
 	};
