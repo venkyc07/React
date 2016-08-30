@@ -44,6 +44,10 @@ module.exports = {
         },
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
+      },
+      {
+        loaders: ['style', 'css', 'sass'],
+        test: /\.scss$/
       }
     ]
   }

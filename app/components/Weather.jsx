@@ -14,8 +14,6 @@ var Weather = React.createClass({
   handleSearch: function (location) {
     var that = this;
 
-  //  debugger;
-
     this.setState({
       isLoading: true,
       errorMessage: undefined
@@ -32,12 +30,7 @@ var Weather = React.createClass({
         isLoading: false,
         errorMessage: e.message
       });
-      //ssalert(errorMessage);
     });
-    //this.setState({
-    //  location:location,
-    //  temp:27
-    //});
   },
   render: function() {
     var {isLoading, temp, location, errorMessage} = this.state;

@@ -115,6 +115,7 @@
 
 	//app css
 	__webpack_require__(264);
+
 	ReactDOM.render(React.createElement(
 	  Router,
 	  { history: hashHistory },
@@ -25626,8 +25627,6 @@
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 
-	    //  debugger;
-
 	    this.setState({
 	      isLoading: true,
 	      errorMessage: undefined
@@ -25644,12 +25643,7 @@
 	        isLoading: false,
 	        errorMessage: e.message
 	      });
-	      //ssalert(errorMessage);
 	    });
-	    //this.setState({
-	    //  location:location,
-	    //  temp:27
-	    //});
 	  },
 	  render: function render() {
 	    var _state = this.state;
@@ -25703,6 +25697,7 @@
 
 	var WeatherForm = React.createClass({
 	  displayName: 'WeatherForm',
+
 
 	  onFormSubmit: function onFormSubmit(e) {
 	    e.preventDefault();
